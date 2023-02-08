@@ -6,7 +6,7 @@
 /*   By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 00:12:39 by imimouni          #+#    #+#             */
-/*   Updated: 2023/02/04 13:44:27 by imimouni         ###   ########.fr       */
+/*   Updated: 2023/02/08 04:03:16 by imimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,21 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
+# include <stdio.h>
 
-# define WIDTH 1000
-# define HIGHT 1000
+# define WIDTH 1500
+# define HIGHT 1500
 
-typedef struct fract_s
+typedef struct s_struc
 {
 	double			x;
 	double			y;
 	double			x_real;
 	double			y_real;
-	double			start_y;
-	double			end_y;
 	double			start_x;
+	double			start_y;
 	double			end_x;
+	double			end_y;
 	double			x_zero;
 	double			y_zero;
 	double			xtmp;
@@ -49,28 +50,28 @@ typedef struct fract_s
 	void			*win;
 	void			*image;
 	char			*set;
-	unsigned char	*chr;
+	char			*chr;
 
-}	t_fract;
+}					t_stru;
 
-void	mandelbrot(t_fract *t);
-void	julia(t_fract *t);
-void	init_env(t_fract *t, char *str);
-void	draw_set(t_fract *t);
-void	iter_loop_mandelbrot(t_fract *t);
-void	set_color(t_fract *t, int color);
-void	switcher(int keycode, t_fract *t);
-void	map(t_fract *t);
-void	zoom(t_fract *t, double x, double y, double zoom);
-void	my_mlx_hook(t_fract *t);
-void	map_julia(t_fract *t);
-void	looping(t_fract *t);
+void	mandelbrot(t_stru *t);
+void	julia(t_stru *t);
+void	init_var(t_stru *t, char *str);
+void	choose_set(t_stru *t);
+void	iter_loop_mandelbrot(t_stru *t);
+void	set_color(t_stru *t, int color);
+void	switcher(int keycode, t_stru *t);
+void	map(t_stru *t);
+void	zoom(t_stru *t, double x, double y, double zoom);
+void	my_mlx_hook(t_stru *t);
+void	map_julia(t_stru *t);
+void	looping(t_stru *t);
 void	ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
-int		mouse_move(int x, int y, t_fract *t);
-int		mouse_press(int btn, int x, int y, t_fract *t);
-int		quiet(t_fract *t);
-int		key_handler(int keycode, t_fract *t);
-void	exit_handler(t_fract *t);
+int		mouse_move(int x, int y, t_stru *t);
+int		mouse_press(int btn, int x, int y, t_stru *t);
+int		quiet(t_stru *t);
+int		key_handler(int keycode, t_stru *t);
+void	exit_handler(t_stru *t);
 
 #endif

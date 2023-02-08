@@ -6,7 +6,7 @@
 #    By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 02:02:39 by imimouni          #+#    #+#              #
-#    Updated: 2023/02/04 13:44:02 by imimouni         ###   ########.fr        #
+#    Updated: 2023/02/08 04:03:51 by imimouni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ CC = gcc
 Header = fractol.h
 
 SRC = event_handlers.c \
-	  fracts.c main.c \
+	  fractals.c main.c \
 	  iter_loop.c map_colors.c \
-	  my_mlx_hook.c \
+	  mlx_hook.c \
 	  keys_handler.c \
 	  switcher.c \
 	  ft_putstr.c\

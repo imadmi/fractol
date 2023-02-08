@@ -6,59 +6,59 @@
 /*   By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 01:27:04 by imimouni          #+#    #+#             */
-/*   Updated: 2023/02/03 18:24:02 by imimouni         ###   ########.fr       */
+/*   Updated: 2023/02/08 04:03:10 by imimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	mouse_move(int x, int y, t_fract *t)
+int	mouse_move(int x, int y, t_stru *fract)
 {
-	if (x >= 0 && y >= 0 && x < WIDTH && y < WIDTH && t->stop == 0
-		&& ft_strcmp(t->set, "j") == 0)
+	if (x >= 0 && y >= 0 && x < WIDTH && y < WIDTH && fract->stop == 0
+		&& ft_strcmp(fract->set, "j") == 0)
 	{
-		t->x_zero = (((double)x / WIDTH) * 4) - 2;
-		t->y_zero = (((double)y / HIGHT) * 4) - 2;
-		draw_set(t);
+		fract->x_zero = (((double)x / WIDTH) * 4) - 2;
+		fract->y_zero = (((double)y / HIGHT) * 4) - 2;
+		choose_set(fract);
 	}
 	return (1);
 }
 
-int	mouse_press(int btn, int x, int y, t_fract *t)
+int	mouse_press(int btn, int x, int y, t_stru *fract)
 {
-	if (btn == 5 && t->stop == 1)
+	if (btn == 5 && fract->stop == 1)
 	{
-		zoom(t, (double)x, (double)y, 1.1);
-		t->zoom_coff *= 1.101;
+		zoom(fract, (double)x, (double)y, 1.1);
+		fract->zoom_coff *= 1.101;
 	}
-	else if (btn == 4 && t->stop == 1)
+	else if (btn == 4 && fract->stop == 1)
 	{
-		zoom(t, (double)x, (double)y, 0.9);
-		t->zoom_coff /= 1.101;
+		zoom(fract, (double)x, (double)y, 0.9);
+		fract->zoom_coff /= 1.101;
 	}
-	draw_set(t);
+	choose_set(fract);
 	return (1);
 }
 
-void	zoom(t_fract *t, double x, double y, double zoom)
+void	zoom(t_stru *fract, double x, double y, double zoom)
 {
 	double	x_map;
 	double	y_map;
 
 	x = WIDTH / 2;
 	y = HIGHT / 2;
-	x_map = ((x / WIDTH) * (t->end_x - t->start_x)) + t->start_x;
-	y_map = ((y / HIGHT) * (t->end_y - t->start_y)) + t->start_y;
-	t->start_x = x_map + ((t->start_x - x_map) * zoom);
-	t->start_y = y_map + ((t->start_y - y_map) * zoom);
-	t->end_y = y_map + ((t->end_y - y_map) * zoom);
-	t->end_x = x_map + ((t->end_x - x_map) * zoom);
-	if (t->max <= 120)
-		t->max += 2;
+	x_map = ((x / WIDTH) * (fract->end_x - fract->start_x)) + fract->start_x;
+	y_map = ((y / HIGHT) * (fract->end_y - fract->start_y)) + fract->start_y;
+	fract->start_x = x_map + ((fract->start_x - x_map) * zoom);
+	fract->start_y = y_map + ((fract->start_y - y_map) * zoom);
+	fract->end_y = y_map + ((fract->end_y - y_map) * zoom);
+	fract->end_x = x_map + ((fract->end_x - x_map) * zoom);
+	if (fract->max <= 120)
+		fract->max += 2;
 }
 
-int	quiet(t_fract *t)
+int	quiet(t_stru *fract)
 {
-	exit_handler(t);
+	exit_handler(fract);
 	return (0);
 }
