@@ -6,7 +6,7 @@
 #    By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 02:02:39 by imimouni          #+#    #+#              #
-#    Updated: 2023/02/12 02:02:17 by imimouni         ###   ########.fr        #
+#    Updated: 2023/02/12 05:53:54 by imimouni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ Header = fractol.h
 SRC = event_handlers.c \
 	  fractals.c \
 	  main.c \
+	  atof.c \
 	  maps.c \
 	  ft_putstr.c\
 

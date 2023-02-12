@@ -6,7 +6,7 @@
 /*   By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 00:12:39 by imimouni          #+#    #+#             */
-/*   Updated: 2023/02/12 02:14:44 by imimouni         ###   ########.fr       */
+/*   Updated: 2023/02/12 06:10:52 by imimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_struc
 
 }					t_stru;
 
+double	ft_atof(char *str);
 void	mandelbrot(t_stru *t);
 void	julia(t_stru *t);
 void	init_var(t_stru *t, char *str);
