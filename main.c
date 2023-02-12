@@ -6,7 +6,7 @@
 /*   By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 16:21:10 by imimouni          #+#    #+#             */
-/*   Updated: 2023/02/12 06:30:03 by imimouni         ###   ########.fr       */
+/*   Updated: 2023/02/12 10:54:08 by imimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	start(t_stru *fract, char *str)
 			&fract->line_bytes, &fract->endian);
 	init_var(fract, str);
 	fract->set = str;
-	choose_set(fract);
 }
 
 int	main(int ac, char **av)
@@ -95,7 +94,10 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		if (!ft_strcmp(av[1], "m") || !ft_strcmp(av[1], "j"))
+		{
 			start(&fract, av[1]);
+			choose_set(&fract);
+		}
 		ft_putstr("Try: ./fractol <set name : m or j>\n");
 		exit(0);
 	}
