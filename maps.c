@@ -6,7 +6,7 @@
 /*   By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 01:14:48 by imimouni          #+#    #+#             */
-/*   Updated: 2023/02/12 00:57:12 by imimouni         ###   ########.fr       */
+/*   Updated: 2023/02/12 02:37:13 by imimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,20 @@
 
 void	map_mandelbrot(t_stru *fract)
 {
-	fract->x = fract->x_real / (WIDTH / (fract->end_x - fract->start_x)) + fract->start_x;
-	fract->y = fract->y_real / (HIGHT / (fract->end_y - fract->start_y)) + fract->start_y;
+	fract->x = fract->x_real * ((fract->end_x - fract->start_x) / WIDTH)
+		+ fract->start_x;
+	fract->y = fract->y_real * ((fract->end_y - fract->start_y) / HIGHT)
+		+ fract->start_y;
 	fract->c_real = fract->x;
 	fract->c_imag = fract->y;
 }
 
 void	map_julia(t_stru *fract)
 {
-	fract->x = fract->x_real / (WIDTH / (fract->end_x - fract->start_x)) + fract->start_x;
-	fract->y = fract->y_real / (HIGHT / (fract->end_y - fract->start_y)) + fract->start_y;
+	fract->x = fract->x_real * ((fract->end_x - fract->start_x) / WIDTH)
+		+ fract->start_x;
+	fract->y = fract->y_real * ((fract->end_y - fract->start_y) / HIGHT)
+		+ fract->start_y;
 }
 
 void	set_color(t_stru *fract)

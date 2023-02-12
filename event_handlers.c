@@ -6,7 +6,7 @@
 /*   By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 01:27:04 by imimouni          #+#    #+#             */
-/*   Updated: 2023/02/12 01:03:17 by imimouni         ###   ########.fr       */
+/*   Updated: 2023/02/12 02:13:42 by imimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	mouse_move(int x, int y, t_stru *fract)
 {
-	
-	if (x >= 0 && y >= 0 && x < WIDTH && y < HIGHT && !ft_strcmp(fract->set, "j"))
+	if (x >= 0 && y >= 0 && x < WIDTH && y < HIGHT
+		&& !ft_strcmp(fract->set, "j"))
 	{
-		fract->c_real =  (((double)x / WIDTH) * 4) - 2;
-		fract->c_imag =  (((double)y / HIGHT) * 4) - 2;
+		fract->c_real = (double)x / WIDTH;
+		fract->c_imag = (double)y / HIGHT;
 		choose_set(fract);
 	}
 	return (1);
@@ -53,20 +53,6 @@ int	mouse_hook(int button, int x, int y, t_stru *fract)
 	else if (button == 4)
 		zoom_in(fract);
 	return (0);
-}
-
-int	exit_handler()
-{
-	exit(0);
-	return (0);
-}
-
-int	key_handler(int keycode, t_stru *fract)
-{
-	(void)fract;
-	if (keycode == 53)
-		exit_handler();
-	return (1);
 }
 
 void	mlx__hook(t_stru *fract)

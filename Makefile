@@ -6,11 +6,11 @@
 #    By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 02:02:39 by imimouni          #+#    #+#              #
-#    Updated: 2023/02/12 00:52:38 by imimouni         ###   ########.fr        #
+#    Updated: 2023/02/12 02:02:17 by imimouni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra
 
 NAME = fractol
 
@@ -32,11 +32,14 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(MLX) -o $(NAME)
-	# clear
+	clear
 	@echo "\033[0;92m Fractol is ready.\033[0m"
 
+%.o: %.c $(Header)
+	$(CC) $(CFLAGS) -c $<
+
 f: all clean
-	# clear
+	clear
 	@echo "\033[0;92m Fractol is ready.\033[0m"
 
 clean :
@@ -50,8 +53,5 @@ fclean : clean
 	@echo "\033[0;93mthe object files and the exicutable are removed.\033[0m"
 
 re : fclean all
-
-%.o: %.c $(Header)
-	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY	:	all clean fclean re f
