@@ -6,15 +6,15 @@
 /*   By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 04:03:19 by imimouni          #+#    #+#             */
-/*   Updated: 2023/02/08 04:03:33 by imimouni         ###   ########.fr       */
+/*   Updated: 2023/02/10 05:09:48 by imimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	ft_putchar_fd(char c, int fd)
+static void	ft_putchar(char c)
 {
-	write(fd, &c, 1);
+	write(1, &c, 1);
 }
 
 void	ft_putstr(char *str)
@@ -27,7 +27,7 @@ void	ft_putstr(char *str)
 	write(1, "\033[31m" , 5);
 	while (str[i])
 	{
-		ft_putchar_fd(str[i], 1);
+		ft_putchar(str[i]);
 		i++;
 	}
 	write(1, "\033[0m" , 5);

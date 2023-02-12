@@ -6,11 +6,11 @@
 #    By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 02:02:39 by imimouni          #+#    #+#              #
-#    Updated: 2023/02/08 04:03:51 by imimouni         ###   ########.fr        #
+#    Updated: 2023/02/12 00:52:38 by imimouni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 
 NAME = fractol
 
@@ -19,11 +19,9 @@ CC = gcc
 Header = fractol.h
 
 SRC = event_handlers.c \
-	  fractals.c main.c \
-	  iter_loop.c map_colors.c \
-	  mlx_hook.c \
-	  keys_handler.c \
-	  switcher.c \
+	  fractals.c \
+	  main.c \
+	  maps.c \
 	  ft_putstr.c\
 
 OBJS = $(SRC:.c=.o)
@@ -34,11 +32,11 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(MLX) -o $(NAME)
-	clear
+	# clear
 	@echo "\033[0;92m Fractol is ready.\033[0m"
 
 f: all clean
-	clear
+	# clear
 	@echo "\033[0;92m Fractol is ready.\033[0m"
 
 clean :

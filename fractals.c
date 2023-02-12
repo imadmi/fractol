@@ -6,7 +6,7 @@
 /*   By: imimouni <imimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 00:52:46 by imimouni          #+#    #+#             */
-/*   Updated: 2023/02/08 04:03:13 by imimouni         ###   ########.fr       */
+/*   Updated: 2023/02/11 23:49:21 by imimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,17 @@ void	julia(t_stru *fract)
 			map_julia(fract);
 			looping(fract);
 			if (fract->iter == fract->max)
-				set_color(fract, 0);
+			{
+				fract->iter = 0;
+				set_color(fract);
+			}
 			else
-				set_color(fract, 1);
+				set_color(fract);
 			fract->x_real++;
 		}
 		fract->y_real++;
 	}
-	my_mlx_hook(fract);
+	mlx__hook(fract);
 }
 
 void	mandelbrot(t_stru *fract)
@@ -43,16 +46,18 @@ void	mandelbrot(t_stru *fract)
 		while (fract->x_real < WIDTH)
 		{
 			fract->iter = 0;
-			map(fract);
+			map_mandelbrot(fract);
 			looping(fract);
 			if (fract->iter == fract->max)
-				set_color(fract, 0);
+			{
+				fract->iter = 0;
+				set_color(fract);
+			}
 			else
-				set_color(fract, 1);
+				set_color(fract);
 			fract->x_real++;
 		}
 		fract->y_real++;
 	}
-	fract->stop = 1;
-	my_mlx_hook(fract);
+	mlx__hook(fract);
 }
